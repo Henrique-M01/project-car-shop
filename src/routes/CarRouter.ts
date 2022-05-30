@@ -9,7 +9,7 @@ export default class CarRouter {
   }
 
   private getAll() {
-    this.router.get('/cars', () => console.log('get'));
+    this.router.get('/cars', CarController.getAll);
   }
 
   constructor() {
