@@ -17,4 +17,6 @@ class CarService extends Service<Car> {
   };
 }
 
-export default CarService;
+const carService = new CarService();
+
+export default carService;
