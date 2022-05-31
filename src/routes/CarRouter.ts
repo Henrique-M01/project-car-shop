@@ -16,9 +16,19 @@ export default class CarRouter {
     this.router.get('/cars/:id', CarController.getById);
   }
 
+  private updateCar() {
+    this.router.put('/cars/:id', CarController.updateCar);
+  }
+
+  private deleteCar() {
+    this.router.delete('/cars/:id', CarController.deleteCar);
+  }
+
   constructor() {
     this.create();
     this.getAll();
     this.getById();
+    this.updateCar();
+    this.deleteCar();
   }
 }
