@@ -12,8 +12,13 @@ export default class CarRouter {
     this.router.get('/cars', CarController.getAll);
   }
 
+  private getById() {
+    this.router.get('/cars/:id', CarController.getById);
+  }
+
   constructor() {
     this.create();
     this.getAll();
+    this.getById();
   }
 }
