@@ -15,6 +15,15 @@ class CarService extends Service<Car> {
 
     return this.model.create(obj);
   };
+
+  update = async (id: string, car: Car): Promise<Car | null> => {
+    // const parsed = CarSchema.safeParse(car);
+    // if (!parsed.success) return null;
+
+    const updatedCar = await this.model.update(id, car);
+
+    return updatedCar;
+  };
 }
 
 const carService = new CarService();

@@ -1,4 +1,4 @@
-import { Model as M, Document } from 'mongoose';
+import { Model as M, UpdateQuery, Document } from 'mongoose';
 import { Model } from '../interfaces/ModelInterface';
 
 abstract class MongoModel<T> implements Model<T> {
@@ -12,7 +12,7 @@ abstract class MongoModel<T> implements Model<T> {
     this.model.findOne({ _id: id });
 
   update = async (id: string, obj: T): Promise<T | null> =>
-    this.model.findOneAndUpdate({ _id: id }, { ...obj }, { new: true });
+    this.model.findByIdAndUpdate(id, obj as UpdateQuery<T>, { new: true });
   
   delete = async (id: string): Promise<T | null> =>
     this.model.findOneAndDelete({ _id: id });

@@ -7,16 +7,11 @@ const MUST_BE_LONG = 'Id must have 24 hexadecimal characters';
 export default class CarController {
   public static async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const { model, year, color, buyValue, seatsQty, doorsQty } = req.body;
+      const { 
+        _id: id, model, year, color, buyValue, seatsQty, doorsQty } = req.body;
 
-      const newCar = {
-        model,
-        year,
-        color,
-        buyValue,
-        seatsQty,
-        doorsQty,
-      };
+      const newCar = { 
+        _id: id, model, year, color, buyValue, seatsQty, doorsQty };
 
       const created = await carService.create(newCar);
 
@@ -77,7 +72,7 @@ export default class CarController {
         return res.status(404).json({ error: NOT_FOUND });
       }
 
-      return res.status(200).json({ _id: id, ...body });
+      return res.status(200).json(updatedCar);
     } catch (error) {
       next(error);
     }
@@ -96,7 +91,6 @@ export default class CarController {
       }
 
       const deleted = await carService.delete(id);
-      console.log(deleted);
 
       if (!deleted) return res.status(404).json({ error: NOT_FOUND });
 
