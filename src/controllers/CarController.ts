@@ -26,6 +26,7 @@ export default class CarController {
   public static async getAll(_req: Request, res: Response, next: NextFunction) {
     try {
       const allCars = await carService.read();
+      console.log(allCars);
       
       return res.status(200).json(allCars);
     } catch (error) {
